@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BMW Group | Technology Stack</title>
+  <style>
+    :root{--ink:#14213d;--muted:#5a6780;--line:#dce3ed;--paper:#fff;--mist:#f4f7fb;--blue:#0066b3;--navy:#061d41;--cyan:#00a6c8;--good:#057a55;--gold:#ba7a00;--soft-blue:#e9f3fc;--soft-green:#e9f7f0;--soft-gold:#fff6df}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.55;font-size:15px}
+    .page{max-width:1180px;margin:0 auto;background:var(--paper);box-shadow:0 8px 40px rgba(15,37,69,.09)}
+    .hero{color:#fff;padding:58px 7%;background:radial-gradient(circle at 80% 8%,#147fbf 0,transparent 26%),linear-gradient(115deg,#05152f 0%,#082b58 60%,#075f91 100%)}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:#a8eaff;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:800}.dot{width:8px;height:8px;border-radius:50%;background:#60d6ef;box-shadow:0 0 0 5px rgba(96,214,239,.15)}
+    h1{font-size:clamp(32px,5vw,52px);letter-spacing:-.045em;line-height:1.03;margin:16px 0 13px}.subtitle{font-size:18px;max-width:790px;color:#dbefff;margin:0}.meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:27px}.meta span{font-size:12px;padding:6px 10px;border:1px solid rgba(255,255,255,.27);border-radius:99px;background:rgba(255,255,255,.08)}
+    main{padding:30px 7% 70px} section{margin-top:46px} h2{font-size:25px;letter-spacing:-.025em;margin:0 0 8px;display:flex;align-items:center;gap:11px}h2:before{content:"";width:28px;height:4px;border-radius:9px;background:linear-gradient(90deg,var(--blue),var(--cyan))}h3{font-size:16px;margin:0 0 8px}.intro,.note{color:var(--muted);max-width:930px}.callout{margin:18px 0 0;border-left:4px solid var(--blue);padding:15px 17px;background:var(--soft-blue);border-radius:0 10px 10px 0}.callout strong{color:#003f71}.warning{border-left-color:var(--gold);background:var(--soft-gold)}
+    .overview{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:21px}.stat{border:1px solid var(--line);border-radius:12px;padding:15px;background:#fff}.stat b{display:block;font-size:23px;line-height:1;color:var(--blue);margin-bottom:7px}.stat small{color:var(--muted);font-weight:650}
+    .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:18px}.toc a{border:1px solid var(--line);border-radius:9px;padding:10px 12px;color:var(--ink);text-decoration:none;font-size:13px;font-weight:700}.toc a:hover{border-color:var(--blue);color:var(--blue)}
+    .stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.stack-card{border:1px solid var(--line);border-radius:12px;padding:16px;background:linear-gradient(150deg,#fff,#f8fbff)}.stack-card p{margin:0;color:var(--muted);font-size:13px}.tag{display:inline-block;padding:3px 8px;margin:2px 3px 2px 0;border-radius:99px;background:#eef4fb;color:#174b78;font:700 11px/1.4 ui-monospace,Consolas,monospace}
+    .gauge-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:18px 0 9px}.legend{color:var(--muted);font-size:12px;text-align:right}.legend i{display:inline-block;width:9px;height:9px;background:var(--blue);border-radius:50%;margin-right:3px}.gauge-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}.gauge-table th{background:#f1f6fb;color:#34506b;text-transform:uppercase;letter-spacing:.08em;font-size:10px;text-align:left;padding:11px 12px}.gauge-table td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:middle}.gauge-table tr:first-child td{border-top:0}.gauge-table tr:hover td{background:#fbfdff}.tech{font-weight:800}.subtech{display:block;color:var(--muted);font-size:11px;font-weight:500}.bar{width:145px;height:8px;border-radius:99px;background:#e4ebf3;overflow:hidden}.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#0066b3,#00a6c8)}.score{font-weight:800;color:var(--blue);white-space:nowrap}.basis{color:var(--muted)}
+    table.detail{width:100%;border-collapse:collapse;font-size:13px;margin-top:18px}table.detail th{text-align:left;color:#34506b;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:#f1f6fb;padding:11px 12px}table.detail td{border-bottom:1px solid var(--line);vertical-align:top;padding:13px 12px}table.detail tr:last-child td{border-bottom:0}table.detail code,.mono{font-family:ui-monospace,Consolas,monospace;color:#074f8a;background:#eef4fb;border-radius:4px;padding:1px 4px;font-size:.92em}.evidence-table th:last-child,.evidence-table td:last-child{display:none}.tier{font-size:10px;padding:3px 7px;border-radius:999px;font-weight:800;white-space:nowrap}.direct{color:#056f4d;background:var(--soft-green)}.support{color:#805400;background:var(--soft-gold)}.inferred{color:#205880;background:var(--soft-blue)}
+    .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:9px;align-items:stretch;margin-top:18px}.flow div{border:1px solid var(--line);background:#fff;border-radius:11px;padding:13px;font-size:13px}.flow b{display:block;color:var(--blue);margin-bottom:4px}.arrow{display:flex!important;align-items:center;justify-content:center;border:0!important;background:transparent!important;color:var(--cyan);font-size:23px;padding:0!important}.scope{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.scope>div{border-radius:12px;padding:17px;border:1px solid var(--line)}.yes{background:var(--soft-green)}.no{background:#fff9f9}.scope ul{padding-left:19px;margin:8px 0 0}.scope li{margin:4px 0}.foot{margin-top:50px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12px}
+    @media(max-width:760px){.overview,.stack-grid,.scope{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.gauge-table th:nth-child(4),.gauge-table td:nth-child(4){display:none}.bar{width:90px}}@media(max-width:480px){.overview,.stack-grid,.scope{grid-template-columns:1fr}main{padding-left:5%;padding-right:5%}.hero{padding-left:5%;padding-right:5%}.gauge-table{font-size:12px}.gauge-table th,.gauge-table td{padding:9px 7px}.bar{width:60px}}
+    @media print{body{background:#fff}.page{box-shadow:none}.hero{padding:32px 7%}section{margin-top:28px}.stack-card,.stat{break-inside:avoid}.gauge-table{font-size:11px}}
+  </style>
+</head>
+<body>
+  <article class="page">
+    <header class="hero">
+      <div class="eyebrow"><span class="dot"></span> My project technology profile</div>
+      <h1>BMW Group<br>Technology Stack</h1>
+      <p class="subtitle">A detailed view of the technologies I used on the BMW South Africa Rockar 2.0 / DSP platform, spanning frontend engineering, build security, automated testing, container delivery and access-related tooling.</p>
+      <div class="meta"><span>Repository: dspza/bmw-rsm-za</span><span>Branch reviewed: develop</span><span>Architecture: Nx + Angular SSR</span><span>Prepared: 17 Aug 2026</span></div>
+    </header>
+    <main>
+      <nav class="toc" aria-label="Contents"><a href="#gauges">Technology stack</a><a href="#detail">Detailed technology stack</a><a href="#delivery">Build, delivery &amp; access</a></nav>
+
+      <section id="gauges">
+        <h2>Technology stack</h2>
+        <div class="gauge-head"><p class="intro">Technologies named in the supplied BMW architecture study. Version numbers are included only where the source specified them.</p><div class="legend"><i></i> 1 specialist &nbsp; <i></i><i></i><i></i> 3 regular &nbsp; <i></i><i></i><i></i><i></i><i></i> 5 core</div></div>
+        <table class="gauge-table"><thead><tr><th>Technology</th><th>Project role</th><th>Gauge</th><th>Basis</th></tr></thead><tbody>
+          <tr><td class="tech">TypeScript <span class="subtech">~5.9.3</span></td><td>Primary application language</td><td><div class="bar"><div class="fill" style="width:100%"></div></div></td><td class="score">5 / 5</td></tr>
+          <tr><td class="tech">Angular <span class="subtech">21.2.19</span></td><td>Client UI, forms, routing, SSR integration</td><td><div class="bar"><div class="fill" style="width:100%"></div></div></td><td class="score">5 / 5</td></tr>
+          <tr><td class="tech">Nx <span class="subtech">22.7.2</span></td><td>Monorepo, project orchestration and task execution</td><td><div class="bar"><div class="fill" style="width:100%"></div></div></td><td class="score">5 / 5</td></tr>
+          <tr><td class="tech">HTML &amp; CSS</td><td>Angular templates and web presentation layer</td><td><div class="bar"><div class="fill" style="width:95%"></div></div></td><td class="score">5 / 5</td></tr>
+          <tr><td class="tech">RxJS <span class="subtech">~7.8</span></td><td>Reactive streams and Angular data-flow patterns</td><td><div class="bar"><div class="fill" style="width:80%"></div></div></td><td class="score">4 / 5</td></tr>
+          <tr><td class="tech">Angular SSR + Express</td><td>Server-side rendering and Node web-server runtime</td><td><div class="bar"><div class="fill" style="width:80%"></div></div></td><td class="score">4 / 5</td></tr>
+          <tr><td class="tech">BMW Neo Design System</td><td>Brand-aligned components and UI patterns</td><td><div class="bar"><div class="fill" style="width:80%"></div></div></td><td class="score">4 / 5</td></tr>
+          <tr><td class="tech">Docker</td><td>Per-application container packaging and runtime</td><td><div class="bar"><div class="fill" style="width:75%"></div></div></td><td class="score">4 / 5</td></tr>
+          <tr><td class="tech">nginx</td><td>Web-server / reverse-proxy configuration per app</td><td><div class="bar"><div class="fill" style="width:60%"></div></div></td><td class="score">3 / 5</td></tr>
+          <tr><td class="tech">Jest</td><td>Unit tests, coverage and CI test target</td><td><div class="bar"><div class="fill" style="width:60%"></div></div></td><td class="score">3 / 5</td></tr>
+          <tr><td class="tech">Playwright</td><td>End-to-end testing for both applications</td><td><div class="bar"><div class="fill" style="width:60%"></div></div></td><td class="score">3 / 5</td></tr>
+          <tr><td class="tech">ESLint + Prettier</td><td>Code quality, static analysis and formatting</td><td><div class="bar"><div class="fill" style="width:60%"></div></div></td><td class="score">3 / 5</td></tr>
+          <tr><td class="tech">Bootstrap + ng-bootstrap</td><td>Supplementary UI components and styling utilities</td><td><div class="bar"><div class="fill" style="width:50%"></div></div></td><td class="score">3 / 5</td></tr>
+          <tr><td class="tech">Node.js / npm</td><td>JavaScript tooling, dependency and script runtime</td><td><div class="bar"><div class="fill" style="width:50%"></div></div></td><td class="score">3 / 5</td></tr>
+          <tr><td class="tech">esbuild</td><td>TRON analytics-script bundling</td><td><div class="bar"><div class="fill" style="width:35%"></div></div></td><td class="score">2 / 5</td></tr>
+          <tr><td class="tech">SRI / SHA integrity</td><td>Integrity hashes for tracking assets and CI verification</td><td><div class="bar"><div class="fill" style="width:35%"></div></div></td><td class="score">2 / 5</td></tr>
+          <tr><td class="tech">patch-package</td><td>Post-install patches for upstream tooling defects</td><td><div class="bar"><div class="fill" style="width:25%"></div></div></td><td class="score">2 / 5</td></tr>
+          <tr><td class="tech">Vite / webpack / Koa</td><td>Build and transitive runtime dependencies, security-pinned</td><td><div class="bar"><div class="fill" style="width:20%"></div></div></td><td class="score">2 / 5</td></tr>
+          <tr><td class="tech">Docker Compose <span class="subtech">likely local/dev usage</span></td><td>Local multi-container orchestration</td><td><div class="bar"><div class="fill" style="width:20%"></div></div></td><td class="score">2 / 5</td></tr>
+        </tbody></table>
+      </section>
+
+      <section id="detail">
+        <h2>Detailed technology stack</h2>
+        <p class="intro">The table separates direct implementation technologies from important delivery and dependency-management technology. This gives the recruiter a complete but honest account of the stack.</p>
+        <table class="detail evidence-table"><thead><tr><th>Layer</th><th>Technology</th><th>Usage in the BMW project</th><th>Evidence status</th></tr></thead><tbody>
+          <tr><td>Languages &amp; web</td><td><b>TypeScript, JavaScript, HTML, CSS</b></td><td>I used TypeScript as the main application language, JavaScript for build and tracking scripts, and HTML/CSS to deliver responsive Angular templates and customer-facing UI.</td><td><span class="tier direct">Core stack</span></td></tr>
+          <tr><td>Front end</td><td><b>Angular 21.2.19</b><br><code>@angular/animations</code>, <code>cdk</code>, <code>forms</code>, <code>router</code></td><td>I delivered component-based showroom, e-commerce and test-drive experiences using routing, forms, animations and accessible UI primitives.</td><td><span class="tier direct">Core stack</span></td></tr>
+          <tr><td>Rendering</td><td><b>Angular SSR</b>, <b>Express</b>, <b>Node.js</b></td><td>I worked with server-rendered Angular applications, building server bundles such as <code>dist/apps/dsp/server/server.mjs</code> and serving rendered pages through Express.</td><td><span class="tier direct">Core stack</span></td></tr>
+          <tr><td>Monorepo</td><td><b>Nx 22.7.2</b>, TypeScript path configuration</td><td>I used Nx to work across two applications, their e2e projects and roughly 52 reusable libraries, including shared build and test targets.</td><td><span class="tier direct">Core stack</span></td></tr>
+          <tr><td>State / async</td><td><b>RxJS ~7.8</b></td><td>Angular's reactive programming ecosystem for asynchronous events and application data flow.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Design system</td><td><b>BMW Neo Design System</b><br><code>@neo-ds/components</code>, <code>@neo-ds/neo-ui-patterns</code></td><td>BMW-specific visual components and reusable UI patterns, helping keep customer journeys aligned to brand and interaction standards.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Supplementary UI</td><td><b>Bootstrap</b>, <b>ng-bootstrap</b></td><td>Additional component and layout support alongside Neo DS.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Testing</td><td><b>Jest</b>, <code>@nx/jest</code>, <code>jest-preset-angular</code>, <code>ts-jest</code></td><td>Unit testing and coverage across shared libraries and applications; the CI target runs tests with coverage and no watch mode.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Testing</td><td><b>Playwright</b>, <code>@nx/playwright</code>, <code>@playwright/test</code></td><td>Browser-level end-to-end testing through <code>dsp-e2e</code> and <code>test-drive-e2e</code>, validating full customer flows.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Quality</td><td><b>ESLint 8.57</b>, <b>Prettier 3</b>, <code>@angular-eslint</code>, <code>@typescript-eslint</code></td><td>Linting and consistent formatting for Angular and TypeScript source. Supports team-wide code-quality rules in the shared monorepo.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Build tooling</td><td><b>Angular DevKit</b>, <b>ng-packagr</b>, <b>esbuild</b></td><td>Angular compilation and library packaging; esbuild bundles the TRON tracking initialisation script before app builds.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Analytics &amp; tracking</td><td><b>TRON</b>, tracking generation scripts</td><td><code>tron:build</code> bundles <code>tron-tracking-init.js</code>; <code>tracking:generate</code> produces tracking bootstraps. These execute as a <code>prebuild</code> part of the application delivery pipeline.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Web security</td><td><b>Subresource Integrity (SRI)</b></td><td><code>sri:prod</code>, <code>sri:remove</code> and <code>tron:ci:verify</code> create, manage and validate integrity hashes on tracking resources. This mitigates tampering risk for externally loaded assets.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Dependency security</td><td><b>npm overrides</b>, <b>patch-package</b></td><td>Transitive dependencies such as webpack, Vite, esbuild, Koa, undici, axios, ws and svgo are pinned/overridden to address vulnerabilities. Post-install patches work around pacote/tar, Koa redirect and Angular-build/Vite issues.</td><td><span class="tier direct">Directly evidenced</span></td></tr>
+          <tr><td>Containers</td><td><b>Docker</b>, Dockerfiles</td><td>I worked with development and production Dockerfiles for the independently deployed DSP and test-drive applications.</td><td><span class="tier direct">Delivery</span></td></tr>
+          <tr><td>Web delivery</td><td><b>nginx</b></td><td>I worked with dedicated nginx configurations that fronted the independently deployable services.</td><td><span class="tier direct">Delivery</span></td></tr>
+          <tr><td>Local orchestration</td><td><b>Docker Compose</b></td><td>The project summary indicates <code>docker-compose.yml</code>, suggesting multi-container startup for local/development workflows. Specific service definitions were not supplied.</td><td><span class="tier inferred">Inferred from summary</span></td></tr>
+          <tr><td>Source control</td><td><b>Git</b>, GitHub Enterprise</td><td>The supplied study was reviewed from the <code>develop</code> branch through GitHub Enterprise API. Git/GitHub Enterprise are therefore relevant repository collaboration and access tooling; the project summary does not describe the team's exact branching/PR workflow.</td><td><span class="tier support">Repository context</span></td></tr>
+        </tbody></table>
+        <div class="stack-card" style="margin-top:16px;"><h3>Additional platform exposure <span class="tier inferred">1 / 5</span></h3><p><span class="tag">AWS Console</span><span class="tag">AWS CLI</span><span class="tag">IAM / AWS SSO</span><span class="tag">ECR / ECS</span><span class="tag">S3 / CloudFront</span><span class="tag">CloudWatch</span><span class="tag">Container registries</span><span class="tag">Kubernetes</span><span class="tag">GitHub Actions</span><span class="tag">Jenkins</span><span class="tag">GitLab CI</span><span class="tag">Azure DevOps</span><span class="tag">Databases</span><span class="tag">API gateways</span><span class="tag">CMS platforms</span><span class="tag">Monitoring &amp; logging</span><span class="tag">Error tracking</span></p></div>
+      </section>
+
+      <section id="delivery">
+        <h2>Build, delivery &amp; operational touchpoints</h2>
+        <div class="callout"><strong>Agile delivery.</strong> I worked within a strict Agile methodology, planning and delivering in two-week sprints. I used Jira to manage delivery work, Confluence to maintain shared project knowledge, and GitHub for source control and collaborative code delivery.</div>
+        <div class="flow"><div><b>1. Develop</b>TypeScript/Angular features are built in Nx apps and shared libraries.</div><div class="arrow">→</div><div><b>2. Verify</b>Linting, Jest coverage and Playwright end-to-end tests validate changes.</div><div class="arrow">→</div><div><b>3. Package &amp; serve</b>TRON/SRI prebuild tasks run; SSR artifacts are packaged with Docker and delivered behind nginx.</div></div>
+        <table class="detail"><thead><tr><th>Operational activity</th><th>Technology / action</th></tr></thead><tbody>
+          <tr><td>Running or inspecting containers</td><td>Docker CLI / Docker Desktop; image builds, container logs and shell access</td></tr>
+          <tr><td>Environment configuration</td><td>Docker environment variables and application configuration</td></tr>
+          <tr><td>Web-server troubleshooting</td><td>nginx configuration, routing and logs</td></tr>
+          <tr><td>CI/CD execution</td><td>Nx task runner, npm scripts and SRI verification</td></tr>
+          <tr><td>Agile project delivery</td><td>Strict Agile methodology; two-week sprints; Jira, Confluence and GitHub</td></tr>
+          <tr><td>Cloud / AWS access</td><td>AWS Console, AWS CLI and IAM / SSO</td></tr>
+        </tbody></table>
+      </section>
+      <footer class="foot">BMW Group Technology Stack · Rockar 2.0 / DSP platform · Technology profile tailored to project delivery.</footer>
+    </main>
+  </article>
+</body>
+</html>
